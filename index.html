@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Emergency Blood</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Lato:wght@400;700&display=swap">
+<style>
+:root{--bg:#f6f2f1;--white:#fff;--ink:#241416;--head:#3a1218;--muted:#6b5b5b;--terra:#c4553a;--crim:#8e1b2a;--gold:#e0a458;--line:#e8dfdb;--tint:#f1e4e2;
+--hd:"Lora",Georgia,serif;--bd:"Lato","Segoe UI",system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--bd)}
+h1,h2,h3,h4{font-family:var(--hd);color:var(--head);line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,5vw,3.4rem)}h2{font-size:clamp(1.7rem,3.4vw,2.3rem)}h3{font-size:1.15rem}
+p{margin:0 0 1em}a{color:var(--crim)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1160px;margin:auto;padding:0 24px}
+.ic{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.top{background:var(--head);color:#f3e6e4;font-size:.84rem}.top .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 20px;padding-top:8px;padding-bottom:8px}
+.top a{color:#fff;text-decoration:none;font-weight:700}.top span{display:inline-flex;gap:8px;align-items:center}.top .ic{width:15px;height:15px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--white);border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:14px 24px;max-width:1160px;margin:auto}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font:700 1.35rem var(--hd);color:var(--head)}.logo svg{width:26px;height:34px;color:var(--crim)}.logo em{font-style:normal;color:var(--crim)}
+nav{display:flex;flex-wrap:wrap;gap:2px 6px}nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:.92rem;padding:8px 12px;border-radius:6px}
+nav a:hover{background:var(--bg)}nav a[aria-current="page"]{color:var(--crim);background:var(--tint)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--terra);color:#fff;border:1.5px solid var(--terra);border-radius:8px;padding:12px 24px;font:700 .95rem var(--bd);cursor:pointer;text-decoration:none;transition:background .15s}
+.btn:hover{background:#ad472e}.btn.line{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}.btn.line:hover{background:rgba(255,255,255,.1)}
+.btn.white{background:#fff;color:var(--crim);border-color:#fff}.btn.white:hover{background:#f6f2f1}.btn.sm{padding:9px 18px}
+.page{display:none}.page.on{display:block}
+.hero{background:radial-gradient(800px 480px at 88% 10%,rgba(142,27,42,.6),transparent 65%),var(--head);color:#fff;padding:84px 0}
+.hero h1{color:#fff}.hero .lead{font-size:1.15rem;color:#e9d9d6;max-width:52ch}
+.hero .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+@media(max-width:900px){.hero .grid2{grid-template-columns:1fr;gap:40px}.hero{padding:56px 0}}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--gold);margin-bottom:14px}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 0}
+.checks{list-style:none;padding:0;margin:30px 0 0;display:flex;flex-wrap:wrap;gap:10px 26px;color:#e9d9d6;font-size:.92rem}.checks li{display:flex;gap:8px;align-items:center}.checks .ic{color:var(--gold);width:18px;height:18px}
+.art{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:30px;text-align:center}
+.art svg.big{width:128px;height:168px;color:var(--crim);filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;text-align:left}
+.mini div{background:#fff;color:var(--ink);border-radius:10px;padding:12px 14px;font-size:.82rem;line-height:1.35}.mini b{display:block;font:700 1.05rem var(--hd);color:var(--head)}
+.sec{padding:76px 0}.sec.w{background:var(--white)}
+.head{max-width:640px;margin:0 auto 44px;text-align:center}.head p{color:var(--muted)}
+.kick{font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--crim);margin:0 0 10px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;box-shadow:0 1px 2px rgba(58,18,24,.05),0 10px 28px rgba(58,18,24,.05)}
+.card p{color:var(--muted);margin:0}.card h3{margin-bottom:8px}.card a.more{display:inline-block;margin-top:14px;font-weight:700;text-decoration:none;font-size:.92rem}
+.tile{width:48px;height:48px;border-radius:12px;background:var(--tint);color:var(--crim);display:grid;place-items:center;margin-bottom:18px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;counter-reset:s}
+.step{position:relative;padding-top:56px}.step::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;width:40px;height:40px;border-radius:50%;background:var(--crim);color:#fff;font:700 1.05rem var(--hd);display:grid;place-items:center}
+.step p{color:var(--muted);margin:0}
+.band{background:var(--crim);color:#fff;padding:48px 0}.band .in{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+.band h2{color:#fff;margin:0}.band p{margin:0 0 6px;font-size:.8rem;letter-spacing:.08em;opacity:.85;font-weight:700}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}@media(max-width:860px){.split{grid-template-columns:1fr;gap:30px}}
+.guide{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;box-shadow:0 10px 28px rgba(58,18,24,.06)}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 18px}
+.chip{padding:14px 0;font:700 1.15rem var(--hd);background:var(--bg);color:var(--head);border:1.5px solid var(--line);border-radius:10px;cursor:pointer}
+.chip:hover{border-color:var(--crim)}.chip[aria-pressed="true"]{background:var(--crim);color:#fff;border-color:var(--crim)}
+.out{margin:0;color:var(--muted)}.out b{color:var(--crim)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.fact{background:var(--bg);border-radius:12px;padding:22px;text-align:center}.fact b{display:block;font:700 1.7rem var(--hd);color:var(--crim)}.fact span{font-size:.9rem;color:var(--muted)}
+.note{font-size:.82rem;color:var(--muted)}
+details{background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;padding:0 22px}
+summary{cursor:pointer;font-weight:700;padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;color:var(--head)}summary::after{content:"+";color:var(--crim);font-size:1.3rem;line-height:1}details[open] summary::after{content:"−"}
+details p{color:var(--muted)}
+.cta{background:var(--head);color:#fff;text-align:center;padding:80px 0}.cta h2{color:#fff}.cta p{color:#e0cfcc;max-width:52ch;margin:0 auto 26px}.cta .row{justify-content:center;margin:0}
+.phead{background:var(--white);border-bottom:1px solid var(--line);padding:52px 0 40px}.phead p{color:var(--muted);max-width:60ch;margin:0}.phead h1{font-size:clamp(2rem,4vw,2.7rem)}
+.layout{display:grid;grid-template-columns:1.6fr 1fr;gap:36px;align-items:start;padding:48px 0 76px}@media(max-width:900px){.layout{grid-template-columns:1fr}}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:30px;box-shadow:0 10px 28px rgba(58,18,24,.05)}
+.side{display:grid;gap:18px}.side .panel{padding:24px}.side h3{margin-bottom:10px}.side ul{margin:0;padding-left:18px;color:var(--muted)}.side li{margin:5px 0}
+.side .dark{background:var(--head);border:0;color:#e9d9d6}.side .dark h3{color:#fff}.side .dark a{color:#fff;font-weight:700}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:640px){form{grid-template-columns:1fr}}.full{grid-column:1/-1}
+label,legend{font-weight:700;font-size:.85rem;color:var(--head)}
+input,select,textarea{display:block;width:100%;margin-top:6px;padding:11px 13px;font:inherit;color:var(--ink);background:#fff;border:1px solid #cdbfba;border-radius:8px}
+input:focus,select:focus,textarea:focus{border-color:var(--crim);outline:2px solid rgba(142,27,42,.2)}
+fieldset{border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:0}fieldset label{display:flex;gap:10px;font-weight:400;font-size:.95rem;color:var(--ink);margin:7px 0}fieldset input{width:auto;margin-top:5px}
+.err{color:#b3261e;font-size:.82rem;min-height:1.1em;margin:3px 0 0}
+.result{padding:18px 20px;border-radius:10px;border-left:5px solid #2f7d6b;background:#eef6f3;margin-top:22px}.result.no{border-color:#b3261e;background:#fbeeed}.result.wait{border-color:#c77a10;background:#fdf3e4}.result h3{margin-bottom:6px}.result p{margin:0 0 6px;color:var(--ink)}
+.ci{display:flex;gap:14px;align-items:flex-start;margin:0 0 20px}.ci .tile{margin:0;width:44px;height:44px}.ci small{display:block;color:var(--muted);font-size:.74rem;font-weight:700;letter-spacing:.06em}.ci a{color:var(--head);font-weight:700;text-decoration:none;font-size:1.05rem}
+.layout>*{min-width:0}
+.tbl{width:100%;border-collapse:collapse}.tbl th{text-align:left;font-size:.75rem;letter-spacing:.06em;color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--line)}.tbl td{padding:14px 12px;border-bottom:1px solid var(--line)}.tbl td:first-child{font:700 1.1rem var(--hd);color:var(--head)}
+.pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700}.p-ok{background:#e3f1ec;color:#1f5f4f}.p-low{background:#fdf0dc;color:#8a5200}.p-crit{background:#fbe4e2;color:#a3221a}.p-na{background:#eee8e6;color:#6b5b5b}
+.meter{height:8px;border-radius:99px;background:var(--line);min-width:110px;overflow:hidden}.meter i{display:block;height:100%;border-radius:99px}
+.inl{display:flex;gap:8px;align-items:center;font-weight:400}.inl select{width:auto;margin:0;padding:8px 10px}
+.dcard{border-radius:18px;padding:26px;color:#fff;background:radial-gradient(520px 300px at 100% 0,rgba(224,164,88,.3),transparent 60%),linear-gradient(135deg,#8e1b2a,#3a1218);box-shadow:0 20px 50px rgba(58,18,24,.28)}
+.dc-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.dc-brand{display:flex;gap:9px;align-items:center;font:700 1.05rem var(--hd)}.dc-brand svg{width:20px;height:26px;color:#fff}.dc-tag{font-size:.65rem;letter-spacing:.1em;opacity:.8;margin-top:2px}
+.dc-badge{background:var(--gold);color:var(--head);font-weight:700;font-size:.78rem;padding:5px 14px;border-radius:99px}
+.dc-mid{display:flex;justify-content:space-between;gap:16px;align-items:center;margin:28px 0}.dc-name{font:700 1.7rem/1.15 var(--hd)}.dc-sub{opacity:.85;font-size:.9rem;margin-top:4px}
+.dc-bg{width:86px;height:86px;border-radius:50%;background:#fff;color:var(--crim);display:grid;place-items:center;font:700 1.9rem var(--hd);flex:none}
+.dc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.dc-stats div{background:rgba(255,255,255,.12);border-radius:10px;padding:10px 12px}.dc-stats b{display:block;font:700 1.1rem var(--hd)}.dc-stats span{font-size:.72rem;opacity:.85}
+.dc-cert{margin:18px 0 0;font-size:.86rem;opacity:.95}.dc-id{margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:.78rem;opacity:.9}
+@media(max-width:520px){.dc-stats{grid-template-columns:1fr}.dc-name{font-size:1.4rem}}
+.fl{list-style:none;padding:0;margin:0}.fl li{display:flex;gap:10px;align-items:flex-start;margin:9px 0}.fl .ic{color:#2f7d6b;width:18px;height:18px;margin-top:4px}
+.dc-who{display:flex;gap:14px;align-items:center;min-width:0}.dc-ph{width:72px;height:72px;border-radius:14px;object-fit:cover;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.7);flex:none;display:grid;place-items:center;font:700 1.5rem var(--hd)}
+.lnk{background:none;border:0;color:var(--crim);font:700 .85rem var(--bd);cursor:pointer;text-decoration:underline;padding:0}
+@media print{body *{visibility:hidden}#dcard,#dcard *{visibility:visible}#dcard{position:absolute;left:0;top:0;width:100%;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.adtab{display:block;width:100%;border:2px solid transparent;cursor:pointer;font:inherit}.adtab[aria-pressed="true"]{border-color:var(--crim);background:var(--white)}
+footer{background:var(--head);color:#d9c6c3;padding:60px 0 26px;font-size:.92rem}
+footer .logo{color:#fff}footer .logo svg,footer .logo em{color:#f2959b}footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}@media(max-width:720px){footer .cols{grid-template-columns:1fr}}
+footer h4{color:#fff;font:700 .78rem var(--bd);letter-spacing:.08em;margin:0 0 12px}footer a{display:block;color:#d9c6c3;text-decoration:none;margin:7px 0}footer a:hover{color:#fff}footer p{max-width:36ch}
+.copy{border-top:1px solid rgba(255,255,255,.14);margin-top:36px;padding-top:20px;font-size:.8rem;color:#bda8a5}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="mark" viewBox="0 0 40 52"><path d="M20 2C20 2 3 24 3 34a17 17 0 0 0 34 0C37 24 20 2 20 2Z" fill="currentColor"/><path d="M7 34h9l4-9 5 17 4-8h7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+<symbol id="heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+<symbol id="drop" viewBox="0 0 24 24"><path d="M12 2.7s-7 7.2-7 12a7 7 0 0 0 14 0c0-4.8-7-12-7-12z"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+<symbol id="clip" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+<symbol id="pulse" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+</defs></svg>
+<div class="top"><div class="wrap"><span><svg class="ic"><use href="#phone"/></svg>24/7 Emergency Helpline: <a href="tel:+919609156545">9609156545</a></span><span><svg class="ic"><use href="#mail"/></svg><a href="mailto:ritam9609@gmail.com">ritam9609@gmail.com</a></span></div></div>
+<header><div class="bar">
+<a class="logo" href="#home"><svg viewBox="0 0 40 52" aria-hidden="true"><use href="#mark"/></svg>Emergency <em>Blood</em></a>
+<nav aria-label="Main"><a href="#home">Home</a><a href="#services">Services</a><a href="#donor">Donor Registration</a><a href="#card">Donor Card</a><a href="#recipient">Recipient Details</a><a href="#stock">Blood Stock</a><a href="#contact">Contact Us</a></nav>
+<a class="btn sm" href="#recipient">Request Blood</a></div></header>
+
+<main>
+<section class="page" id="home" aria-label="Home">
+<div class="hero"><div class="wrap grid2"><div>
+<span class="eyebrow">EMERGENCY BLOOD MANAGEMENT SYSTEM</span>
+<h1>Connecting blood donors with patients who need them urgently.</h1>
+<p class="lead">One portal for hospitals, families and donors. Register as a donor, raise an emergency request, and see which blood groups are compatible.</p>
+<div class="row"><a class="btn" href="#recipient">Request Blood</a><a class="btn line" href="#donor">Become a Donor</a></div>
+<ul class="checks"><li><svg class="ic"><use href="#check"/></svg>Donor health screening</li><li><svg class="ic"><use href="#check"/></svg>All 8 blood groups</li><li><svg class="ic"><use href="#check"/></svg>Urgency-based requests</li></ul></div>
+<div class="art" aria-hidden="true"><svg class="big" viewBox="0 0 40 52"><use href="#mark"/></svg>
+<div class="mini"><div><b>A+</b>can receive from A+, A−, O+, O−</div><div><b>O−</b>universal red-cell donor</div></div></div></div></div>
+
+<div class="sec"><div class="wrap"><div class="head"><p class="kick">WHAT WE DO</p><h2>Support for every step of a blood emergency</h2><p>From the first request to donor follow-up, the portal keeps everyone informed.</p></div>
+<div class="cards">
+<div class="card"><div class="tile"><svg class="ic"><use href="#plus"/></svg></div><h3>Emergency requests</h3><p>Raise a request with blood group, units, hospital and urgency so compatible donors can be found quickly.</p><a class="more" href="#recipient">Request blood →</a></div>
+<div class="card"><div class="tile"><svg class="ic"><use href="#users"/></svg></div><h3>Donor network</h3><p>Donors register their blood group, location and health reports, and are matched by type and city.</p><a class="more" href="#donor">Register as donor →</a></div>
+<div class="card"><div class="tile"><svg class="ic"><use href="#shield"/></svg></div><h3>Screening and support</h3><p>An eligibility check and clear guidance keep every donation safe for donor and patient.</p><a class="more" href="#services">View services →</a></div></div></div></div>
+
+<div class="sec w"><div class="wrap"><div class="head"><p class="kick">HOW IT WORKS</p><h2>Four simple steps</h2></div>
+<div class="steps"><div class="step"><h3>Register or request</h3><p>Donors sign up with their details and reports. Families post a blood request.</p></div>
+<div class="step"><h3>Check compatibility</h3><p>The blood group guide shows which donor groups can safely help.</p></div>
+<div class="step"><h3>Screen the donor</h3><p>Health history and reports are reviewed before a donor is listed.</p></div>
+<div class="step"><h3>Coordinate by phone</h3><p>The team contacts the donor and the requester to arrange the donation.</p></div></div></div></div>
+
+<div class="band"><div class="wrap in"><div><p>SAVE UP TO 3 LIVES</p><h2>Donate blood today</h2></div><div class="row" style="margin:0"><a class="btn white" href="#donor"><svg class="ic"><use href="#heart"/></svg>Donate Now</a><a class="btn line" href="#services">Learn How It Works</a></div></div></div>
+
+<div class="sec"><div class="wrap split"><div><p class="kick">BLOOD GROUP GUIDE</p><h2>Who can give to whom?</h2><p style="color:var(--muted)">Choose a blood group to see which red-cell donors are compatible and which groups it can help. Always confirm with the hospital blood bank.</p></div>
+<div class="guide"><div class="chips" id="chips"></div><p class="out" id="compat" aria-live="polite">Select a blood group above.</p></div></div></div>
+
+<div class="sec w"><div class="wrap"><div class="head"><p class="kick">ELIGIBILITY</p><h2>General donor guidelines</h2><p>Final eligibility is always decided by qualified medical staff.</p></div>
+<div class="facts"><div class="fact"><b>18–65</b><span>years of age</span></div><div class="fact"><b>50 kg+</b><span>body weight</span></div><div class="fact"><b>12.5 g/dL+</b><span>hemoglobin</span></div><div class="fact"><b>3 months</b><span>between donations</span></div></div></div></div>
+
+<div class="sec"><div class="wrap" style="max-width:800px"><div class="head"><p class="kick">FAQ</p><h2>Common questions</h2></div>
+<details><summary>Who can donate blood?</summary><p>Healthy adults who meet the age, weight and hemoglobin guidelines above and have no disqualifying condition. The donor registration page runs a quick check, and a doctor confirms.</p></details>
+<details><summary>How often can I donate?</summary><p>Whole blood donors should wait at least three months between donations.</p></details>
+<details><summary>What if I am not eligible right now?</summary><p>Some reasons are temporary, such as an infection or a recent tattoo. Your registration shows how long to wait so you can donate later.</p></details>
+<details><summary>What should I do in a life-threatening emergency?</summary><p>Call 108 or go to the nearest hospital immediately, then post a request here so donors can be arranged.</p></details></div></div>
+
+<div class="cta"><div class="wrap"><h2>Ready to save a life today?</h2><p>Whether you need blood urgently or want to donate, we are here to help.</p>
+<div class="row"><a class="btn" href="#recipient">Request Blood Now</a><a class="btn white" href="#donor">Donate Now</a><a class="btn line" href="#contact">Contact Us</a></div></div></div>
+</section>
+
+<section class="page" id="services" aria-label="Services">
+<div class="phead"><div class="wrap"><p class="kick">SERVICES</p><h1>How we help patients and donors</h1><p>Each service is built around one job: getting the right blood to the right person, quickly and safely.</p></div></div>
+<div class="sec"><div class="wrap"><div class="cards">
+<div class="card"><div class="tile"><svg class="ic"><use href="#plus"/></svg></div><h3>Emergency blood requests</h3><p>Post the patient’s blood group, units, hospital and urgency. Critical cases are marked so they come first.</p></div>
+<div class="card"><div class="tile"><svg class="ic"><use href="#users"/></svg></div><h3>Donor matching</h3><p>Requests are matched to registered donors by blood group compatibility and city.</p></div>
+<div class="card"><div class="tile"><svg class="ic"><use href="#clip"/></svg></div><h3>Donor registration</h3><p>Donors share contact details, blood group and complete health reports in one place.</p></div>
+<div class="card"><div class="tile"><svg class="ic"><use href="#shield"/></svg></div><h3>Eligibility screening</h3><p>A quick check flags common reasons a donor may need to wait or see a doctor first.</p></div>
+<div class="card"><div class="tile"><svg class="ic"><use href="#heart"/></svg></div><h3>Donor support</h3><p>Advice on eating, drinking and resting around a donation, and when the next one is possible.</p></div>
+<div class="card"><div class="tile"><svg class="ic"><use href="#phone"/></svg></div><h3>Contact desk</h3><p>Call <a href="tel:+919609156545">9609156545</a> for urgent coordination with the team.</p></div></div>
+<div class="row" style="justify-content:center;margin-top:40px"><a class="btn" href="#recipient">Request Blood</a><a class="btn" style="background:var(--crim);border-color:var(--crim)" href="#donor">Register as Donor</a></div></div></div>
+</section>
+
+<section class="page" id="donor" aria-label="Donor Registration">
+<div class="phead"><div class="wrap"><p class="kick">BECOME A DONOR</p><h1>Donor registration</h1><p>Share your details and health information. The screening helps identify medical conditions that may prevent you from donating.</p></div></div>
+<div class="wrap layout"><div class="panel">
+<form id="donorForm" novalidate>
+<div><label for="dn">Full name *</label><input id="dn" autocomplete="name"><p class="err" data-for="dn"></p></div>
+<div><label for="dp">Phone number *</label><input id="dp" type="tel" autocomplete="tel"><p class="err" data-for="dp"></p></div>
+<div><label for="de">Email *</label><input id="de" type="email" autocomplete="email"><p class="err" data-for="de"></p></div>
+<div><label for="dc">City *</label><input id="dc" autocomplete="address-level2"><p class="err" data-for="dc"></p></div>
+<div><label for="dg">Blood group *</label><select id="dg"><option value="">Select</option></select><p class="err" data-for="dg"></p></div>
+<div><label for="da">Age *</label><input id="da" type="number" min="1" max="99"><p class="err" data-for="da"></p></div>
+<div><label for="dw">Weight (kg) *</label><input id="dw" type="number" min="20" max="250"><p class="err" data-for="dw"></p></div>
+<div><label for="dh">Hemoglobin (g/dL), from your report *</label><input id="dh" type="number" step="0.1" min="3" max="25"><p class="err" data-for="dh"></p></div>
+<fieldset class="full"><legend>Health history. Tick everything that applies.</legend>
+<label><input type="checkbox" name="c" value="bbi"> Told I have HIV, hepatitis B or hepatitis C</label>
+<label><input type="checkbox" name="c" value="heart"> Heart disease, epilepsy, cancer or a bleeding disorder</label>
+<label><input type="checkbox" name="c" value="diab"> Diabetes on insulin</label>
+<label><input type="checkbox" name="c" value="fever"> Fever, infection or on antibiotics now</label>
+<label><input type="checkbox" name="c" value="tattoo"> Tattoo, piercing or surgery in the last 6 months</label>
+<label><input type="checkbox" name="c" value="donated"> Donated blood in the last 3 months</label>
+<label><input type="checkbox" name="c" value="preg"> Pregnant or breastfeeding</label></fieldset>
+<div class="full"><label for="dr">Complete health reports (PDF or image) *</label><input id="dr" type="file" accept=".pdf,image/*" multiple><p class="err" data-for="dr"></p></div>
+<div class="full"><button class="btn" type="submit">Register as Donor</button></div></form>
+<div id="donorOut" aria-live="polite"></div>
+<p class="note" style="margin:18px 0 0">Submissions are saved to the shared database when you are signed in with access. Otherwise nothing is sent.</p></div>
+<aside class="side"><div class="panel"><h3>Before you register</h3><ul><li>Age 18 to 65</li><li>Weight at least 50 kg</li><li>Hemoglobin 12.5 g/dL or above</li><li>No donation in the last 3 months</li></ul></div>
+<div class="panel"><h3>Why we ask for reports</h3><p style="margin:0;color:var(--muted)">Health reports help the medical team spot existing conditions and confirm you are safe to donate.</p></div></aside></div>
+</section>
+
+<section class="page" id="recipient" aria-label="Recipient Details">
+<div class="phead"><div class="wrap"><p class="kick">NEED BLOOD</p><h1>Recipient details</h1><p>Fill in what you know about the patient. The more detail you give, the faster donors can be matched.</p></div></div>
+<div class="wrap layout"><div class="panel">
+<form id="recForm" novalidate>
+<div><label for="rn">Patient name *</label><input id="rn" autocomplete="off"><p class="err" data-for="rn"></p></div>
+<div><label for="rg">Blood group needed *</label><select id="rg"><option value="">Select</option></select><p class="err" data-for="rg"></p></div>
+<div><label for="ru">Units required *</label><input id="ru" type="number" min="1" max="20"><p class="err" data-for="ru"></p></div>
+<div><label for="rl">Urgency</label><select id="rl"><option>Critical (within hours)</option><option>Urgent (within 24 hours)</option><option>Planned (within a week)</option></select></div>
+<div><label for="rh">Hospital and ward *</label><input id="rh"><p class="err" data-for="rh"></p></div>
+<div><label for="rc">City *</label><input id="rc"><p class="err" data-for="rc"></p></div>
+<div><label for="rp">Contact person *</label><input id="rp"><p class="err" data-for="rp"></p></div>
+<div><label for="rt">Contact phone *</label><input id="rt" type="tel"><p class="err" data-for="rt"></p></div>
+<div class="full"><label for="rd">Reason or diagnosis (optional)</label><textarea id="rd" rows="3"></textarea></div>
+<div class="full"><button class="btn" type="submit">Send Blood Request</button></div></form>
+<div id="recOut" aria-live="polite"></div>
+<p class="note" style="margin:18px 0 0">Requests are saved to the shared database when you are signed in with access. Otherwise nothing is sent.</p></div>
+<aside class="side"><div class="panel dark"><h3>Life-threatening emergency?</h3><p style="margin:0 0 8px">Call <a href="tel:108">108</a> or go to the nearest hospital now. Then call our helpline on <a href="tel:+919609156545">9609156545</a>.</p></div>
+<div class="panel"><h3>Have ready</h3><ul><li>Patient’s blood group</li><li>Units needed and urgency</li><li>Hospital name and ward</li><li>A phone number that will be answered</li></ul></div></aside></div>
+</section>
+
+<section class="page" id="stock" aria-label="Blood Stock">
+<div class="phead"><div class="wrap"><p class="kick">BLOOD STOCK</p><h1>Blood availability</h1><p>Units available by blood group, as last entered by the blood bank team. Always confirm with the hospital before travelling.</p></div></div>
+<div class="wrap layout"><div>
+<div class="facts" id="sum" style="margin-bottom:22px"></div>
+<div class="panel"><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px"><h2 style="font-size:1.3rem;margin:0">Stock by blood group</h2><label class="inl">Show <select id="sf"><option value="all">All groups</option><option value="att">Needs attention</option></select></label></div>
+<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Blood group</th><th>Units</th><th>Status</th><th>Level</th></tr></thead><tbody id="stb"></tbody></table></div>
+<p class="note" id="stNote" style="margin:16px 0 0"></p></div></div>
+<aside class="side"><div class="panel"><h3>Update stock</h3>
+<form id="stForm" style="grid-template-columns:1fr;gap:12px" novalidate>
+<div><label for="sg">Blood group *</label><select id="sg"><option value="">Select</option></select><p class="err" data-for="sg"></p></div>
+<div><label for="su">Units available *</label><input id="su" type="number" min="0" max="999"><p class="err" data-for="su"></p></div>
+<div class="row" style="margin:0"><button class="btn sm" type="submit">Update</button><button class="btn sm line" type="button" id="stReset" style="color:var(--crim);border-color:var(--crim)">Clear all</button></div></form>
+<div id="stOut" aria-live="polite"></div>
+<p class="note" style="margin:14px 0 0">Only admins can update the shared stock. Figures are entered by administrators and are not live data from a blood bank.</p></div>
+<div class="panel"><h3>Status guide</h3><ul><li><b>Critical:</b> under 5 units</li><li><b>Low:</b> 5 to 14 units</li><li><b>Adequate:</b> 15 units or more</li></ul></div>
+<div class="panel dark"><h3>Need blood now?</h3><p style="margin:0"><a href="#recipient">Raise a request</a> or call <a href="tel:+919609156545">9609156545</a>.</p></div></aside></div>
+</section>
+
+<section class="page" id="card" aria-label="Donor Card">
+<div class="phead"><div class="wrap"><p class="kick">DONOR RECOGNITION</p><h1>Digital donor card and certificate</h1><p>Every donor gets a card with their details, blood group and donation record. The more you donate, the higher your level and the more facilities you unlock.</p></div></div>
+<div class="wrap layout"><div>
+<div class="dcard" id="dcard"></div>
+<div class="row" style="margin:14px 0 0"><button class="btn sm" type="button" id="dlPdf">Download PDF</button><button class="btn sm line" type="button" id="dlPng" style="color:var(--crim);border-color:var(--crim)">Download image</button><span class="note" id="dlMsg" aria-live="polite"></span></div>
+<div class="panel" style="margin-top:22px"><h3>Progress</h3><div id="prog"></div></div>
+<div class="panel" style="margin-top:22px"><h3>Facilities at your level</h3><ul class="fl" id="fac"></ul><p class="note" style="margin:12px 0 0">These facilities are suggestions. Replace them with the benefits your organisation will actually offer.</p></div>
+<div class="panel" style="margin-top:22px"><h3>Donation record</h3><div id="hist"></div></div></div>
+<aside class="side"><div class="panel"><h3>Your details</h3>
+<form id="cardForm" style="grid-template-columns:1fr;gap:12px" novalidate>
+<div><label for="kn">Full name *</label><input id="kn" autocomplete="name"><p class="err" data-for="kn"></p></div>
+<div><label for="kg">Blood group *</label><select id="kg"><option value="">Select</option></select><p class="err" data-for="kg"></p></div>
+<div><label for="kp">Phone *</label><input id="kp" type="tel" autocomplete="tel"><p class="err" data-for="kp"></p></div>
+<div><label for="kc">City *</label><input id="kc" autocomplete="address-level2"><p class="err" data-for="kc"></p></div>
+<div><label for="kf">Profile photo (optional)</label><input id="kf" type="file" accept="image/*"><p class="err" id="kfMsg"></p><button type="button" class="lnk" id="kfx">Remove photo</button></div>
+<button class="btn sm" type="submit">Create or update card</button></form></div>
+<div class="panel"><h3>Add a donation</h3>
+<form id="donForm" style="grid-template-columns:1fr;gap:12px" novalidate>
+<div><label for="kd">Date of donation *</label><input id="kd" type="date"><p class="err" data-for="kd"></p></div>
+<div><label for="kl">Hospital or blood bank *</label><input id="kl"><p class="err" data-for="kl"></p></div>
+<button class="btn sm" type="submit">Add to record</button></form><div id="donMsg" aria-live="polite"></div>
+<p class="note" style="margin:14px 0 0">Your card is saved on this device and, when you are signed in, to your private record in the shared database. Blood bank staff should verify each donation.</p></div></aside></div>
+</section>
+
+<section class="page" id="admin" aria-label="Admin">
+<div class="phead"><div class="wrap"><p class="kick">ADMIN</p><h1>Admin dashboard</h1><p>Review donor registrations, blood requests and messages. Only administrators can open this page.</p></div></div>
+<div class="wrap" style="padding:40px 24px 76px"><p id="adGate" class="note">Loading…</p>
+<div id="adBody" hidden><div class="facts" id="adSum" style="margin-bottom:22px"></div>
+<div class="panel"><div class="row" style="margin:0 0 16px"><button class="btn sm" type="button" id="adRef">Refresh</button><button class="btn sm line" type="button" id="adCsv" style="color:var(--crim);border-color:var(--crim)">Export CSV</button><a class="btn sm line" href="#stock" style="color:var(--crim);border-color:var(--crim)">Update blood stock</a></div>
+<div id="adTbl" style="overflow-x:auto"></div><p class="note" id="adMsg" style="margin:14px 0 0"></p></div></div></div>
+</section>
+
+<section class="page" id="contact" aria-label="Contact Us">
+<div class="phead"><div class="wrap"><p class="kick">CONTACT US</p><h1>We are here to help</h1><p>Call for urgent coordination, or send a message for any other question.</p></div></div>
+<div class="wrap layout"><div class="panel"><h2 style="font-size:1.5rem">Send us a message</h2>
+<form id="conForm" novalidate>
+<div><label for="cn">Full name *</label><input id="cn" autocomplete="name"><p class="err" data-for="cn"></p></div>
+<div><label for="ce">Email *</label><input id="ce" type="email" autocomplete="email"><p class="err" data-for="ce"></p></div>
+<div class="full"><label for="cm">Message *</label><textarea id="cm" rows="5"></textarea><p class="err" data-for="cm"></p></div>
+<div class="full"><button class="btn" type="submit">Send Message</button></div></form>
+<div id="conOut" aria-live="polite"></div></div>
+<aside class="side"><div class="panel"><div class="ci"><div class="tile"><svg class="ic"><use href="#phone"/></svg></div><div><small>EMERGENCY HELPLINE</small><a href="tel:+919609156545">9609156545</a></div></div>
+<div class="ci" style="margin:0"><div class="tile"><svg class="ic"><use href="#mail"/></svg></div><div><small>EMAIL</small><a href="mailto:ritam9609@gmail.com">ritam9609@gmail.com</a></div></div></div>
+<div class="panel dark"><h3>Medical emergency?</h3><p style="margin:0">Call <a href="tel:108">108</a> or go to the nearest hospital first.</p></div></aside></div>
+</section>
+</main>
+
+<footer><div class="wrap"><div class="cols">
+<div><a class="logo" href="#home" style="margin-bottom:14px"><svg viewBox="0 0 40 52" aria-hidden="true"><use href="#mark"/></svg>Emergency <em>Blood</em></a><p>Connecting patients and donors in life-saving blood emergencies.</p></div>
+<div><h4>PAGES</h4><a href="#home">Home</a><a href="#services">Services</a><a href="#donor">Donor Registration</a><a href="#recipient">Recipient Details</a><a href="#stock">Blood Stock</a><a href="#card">Donor Card</a><a href="#admin">Admin</a></div>
+<div><h4>CONTACT</h4><a href="#contact">Contact Us</a><a href="tel:+919609156545">9609156545</a><a href="mailto:ritam9609@gmail.com">ritam9609@gmail.com</a></div></div>
+<div class="copy">© 2026 Emergency Blood Management System. Final eligibility for any donation is decided by qualified medical staff.</div></div></footer>
+
+<script>
+const G=["A+","A−","B+","B−","AB+","AB−","O+","O−"];
+const GIVE={"O−":G,"O+":["A+","B+","AB+","O+"],"A−":["A+","A−","AB+","AB−"],"A+":["A+","AB+"],"B−":["B+","B−","AB+","AB−"],"B+":["B+","AB+"],"AB−":["AB+","AB−"],"AB+":["AB+"]};
+const $=id=>document.getElementById(id);const pages=["home","services","donor","card","recipient","stock","contact","admin"];
+function route(){let h=(location.hash||"#home").slice(1);if(!pages.includes(h))h="home";
+pages.forEach(p=>$(p).classList.toggle("on",p===h));
+document.querySelectorAll("nav a").forEach(a=>a.getAttribute("href")==="#"+h?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+document.title=$(h).getAttribute("aria-label")+" | Emergency Blood"}
+addEventListener("hashchange",()=>{route();scrollTo(0,0)});route();
+["dg","rg"].forEach(id=>G.forEach(g=>$(id).add(new Option(g,g))));
+G.forEach(g=>{const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=g;b.setAttribute("aria-pressed","false");
+b.onclick=()=>{$("chips").querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));
+$("compat").innerHTML="<b>"+g+"</b> can receive from <b>"+G.filter(d=>GIVE[d].includes(g)).join(", ")+"</b> and can donate to <b>"+GIVE[g].join(", ")+"</b>."};$("chips").appendChild(b)});
+function check(rules){let ok=true,first=null;rules.forEach(([id,t,m])=>{const el=$(id),e=document.querySelector('[data-for="'+id+'"]'),bad=!t(el);e.textContent=bad?m:"";el.setAttribute("aria-invalid",bad);if(bad){ok=false;first=first||el}});if(first)first.focus();return ok}
+const filled=(id,m)=>[id,el=>el.value.trim()!=="",m],phone=el=>/^[+\d][\d\s-]{6,15}$/.test(el.value.trim()),mail=el=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim()),num=(a,b)=>el=>{const v=parseFloat(el.value);return v>=a&&v<=b};
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("donorForm").addEventListener("submit",ev=>{ev.preventDefault();
+if(!check([filled("dn","Enter your full name."),["dp",phone,"Enter a valid phone number."],["de",mail,"Enter a valid email address."],filled("dc","Enter your city."),filled("dg","Choose your blood group."),["da",num(1,99),"Enter your age."],["dw",num(20,250),"Enter your weight in kg."],["dh",num(3,25),"Enter the hemoglobin value from your report."],["dr",el=>el.files.length>0,"Attach at least one health report."]]))return;
+const age=+$("da").value,wt=+$("dw").value,hb=+$("dh").value,f=[...document.querySelectorAll('input[name="c"]:checked')].map(c=>c.value),no=[],wait=[];
+if(age<18||age>65)no.push("Donors are usually aged 18 to 65.");if(wt<50)no.push("Donors usually need to weigh at least 50 kg.");if(hb<12.5)no.push("Hemoglobin is usually needed at 12.5 g/dL or above.");
+if(f.includes("bbi"))no.push("A history of HIV or hepatitis B or C prevents donation.");if(f.includes("heart"))no.push("Your listed condition needs a doctor’s clearance first.");if(f.includes("diab"))no.push("Insulin-treated diabetes needs a doctor’s clearance first.");
+if(f.includes("fever"))wait.push("Wait until the infection or antibiotics are finished.");if(f.includes("tattoo"))wait.push("Wait 6 months after a tattoo, piercing or surgery.");if(f.includes("donated"))wait.push("Wait at least 3 months between donations.");if(f.includes("preg"))wait.push("Wait until after pregnancy and breastfeeding.");
+const n=esc($("dn").value.trim().split(" ")[0]),o=$("donorOut");
+if(no.length)o.innerHTML='<div class="result no"><h3>Not eligible at this time, '+n+'</h3><p>'+no.concat(wait).map(esc).join("<br>")+'</p><p>A medical officer can confirm this. You can still help by sharing our requests.</p></div>';
+else if(wait.length)o.innerHTML='<div class="result wait"><h3>Eligible later, '+n+'</h3><p>'+wait.map(esc).join("<br>")+'</p><p>We will keep your registration so you can be contacted once you are clear to donate.</p></div>';
+else o.innerHTML='<div class="result"><h3>Thank you, '+n+'. You look eligible.</h3><p>Our medical team will review your reports and confirm. You will be contacted on '+esc($("dp").value)+' when a '+esc($("dg").value)+' request matches you in '+esc($("dc").value)+'.</p></div>';
+o.scrollIntoView({behavior:"smooth",block:"nearest"});send("registrations",{name:$("dn").value.trim(),phone:$("dp").value.trim(),email:$("de").value.trim(),city:$("dc").value.trim(),group:$("dg").value,age,weight:wt,hemoglobin:hb,conditions:f,result:no.length?"Not eligible":wait.length?"Eligible later":"Likely eligible",reasons:no.concat(wait),reports:[...$("dr").files].map(x=>x.name)},o)});
+$("recForm").addEventListener("submit",ev=>{ev.preventDefault();
+if(!check([filled("rn","Enter the patient’s name."),filled("rg","Choose the blood group needed."),["ru",num(1,20),"Enter units needed (1 to 20)."],filled("rh","Enter the hospital and ward."),filled("rc","Enter the city."),filled("rp","Enter a contact person."),["rt",phone,"Enter a valid phone number."]]))return;
+const g=$("rg").value,d=G.filter(x=>GIVE[x].includes(g));
+$("recOut").innerHTML='<div class="result"><h3>Request received: '+esc($("rl").value)+'</h3><p>'+esc($("ru").value)+' unit(s) of <b>'+esc(g)+'</b> for '+esc($("rn").value)+' at '+esc($("rh").value)+', '+esc($("rc").value)+'. Compatible donor groups: '+d.map(esc).join(", ")+'. We will call '+esc($("rp").value)+' on '+esc($("rt").value)+' as donors respond.</p><p>For a real emergency, also call the hospital blood bank or 108 now.</p></div>';
+$("recOut").scrollIntoView({behavior:"smooth",block:"nearest"});send("requests",{patient:$("rn").value.trim(),group:g,units:+$("ru").value,urgency:$("rl").value,hospital:$("rh").value.trim(),city:$("rc").value.trim(),contact:$("rp").value.trim(),phone:$("rt").value.trim(),reason:$("rd").value.trim()},$("recOut").querySelector(".result"))});
+$("conForm").addEventListener("submit",ev=>{ev.preventDefault();
+if(!check([filled("cn","Enter your name."),["ce",mail,"Enter a valid email address."],filled("cm","Write a message.")]))return;
+$("conOut").innerHTML='<div class="result"><h3>Thank you, '+esc($("cn").value.trim())+'</h3><p>Your message is ready to send. We will reply to '+esc($("ce").value)+'.</p></div>';send("messages",{name:$("cn").value.trim(),email:$("ce").value.trim(),message:$("cm").value.trim()},$("conOut").querySelector(".result"))});
+let stock={};
+function saveStock(){return api("PUT","/api/stock",{data:stock},true).catch(e=>{$("stOut").innerHTML='<p class="note" style="margin:10px 0 0">'+(e.status===401?'Admin sign-in is required. Open the Admin page and sign in.':'Could not save the stock. Please try again.')+'</p>';loadStock()})}
+G.forEach(g=>$("sg").add(new Option(g,g)));
+const lvl=u=>u==null?["na","Not updated"]:u<5?["crit","Critical"]:u<15?["low","Low"]:["ok","Adequate"];
+function renderStock(){const f=$("sf").value;let tot=0,av=0,att=0;
+G.forEach(g=>{const u=stock[g]?stock[g].units:null;if(u!=null){tot+=u;if(u>0)av++;if(u<15)att++}});
+$("sum").innerHTML=[[tot,"total units"],[av+" of 8","groups in stock"],[att,"need attention"]].map(([a,b])=>'<div class="fact"><b>'+a+'</b><span>'+b+'</span></div>').join("");
+$("stb").innerHTML=G.filter(g=>{if(f==="all")return true;const u=stock[g]?stock[g].units:null;return u!=null&&u<15}).map(g=>{const u=stock[g]?stock[g].units:null,[k,t]=lvl(u),w=u==null?0:Math.min(100,u/30*100),c=k==="ok"?"#2f7d6b":k==="low"?"#c77a10":"#b3261e";
+return '<tr><td>'+g+'</td><td>'+(u==null?"–":u)+'</td><td><span class="pill p-'+k+'">'+t+'</span></td><td><div class="meter"><i style="width:'+w+'%;background:'+c+'"></i></div></td></tr>'}).join("")||'<tr><td colspan="4" class="note">No groups need attention.</td></tr>';
+const ts=Object.values(stock).map(s=>s.at).filter(Boolean).sort().pop();$("stNote").textContent=ts?"Last updated "+new Date(ts).toLocaleString():"No stock figures have been entered yet. Use the form to add them."}
+$("sf").addEventListener("change",renderStock);
+$("stForm").addEventListener("submit",ev=>{ev.preventDefault();if(!needAdmin())return;
+if(!check([filled("sg","Choose a blood group."),["su",num(0,999),"Enter units from 0 to 999."]]))return;
+const g=$("sg").value,u=Math.round(+$("su").value);stock[g]={units:u,at:Date.now()};saveStock();renderStock();
+$("stOut").innerHTML='<div class="result" style="margin-top:14px"><p>'+esc(g)+' updated to '+u+' unit(s).</p></div>';$("su").value=""});
+$("stReset").addEventListener("click",()=>{if(!needAdmin())return;stock={};saveStock();renderStock();$("stOut").innerHTML=""});
+const _t=new Date(),todayISO=_t.getFullYear()+"-"+String(_t.getMonth()+1).padStart(2,"0")+"-"+String(_t.getDate()).padStart(2,"0");
+let donor={donations:[]};try{donor=JSON.parse(localStorage.getItem("ebDonor"))||donor}catch(e){}
+function saveDonor(){try{localStorage.setItem("ebDonor",JSON.stringify(donor))}catch(e){}}
+G.forEach(g=>$("kg").add(new Option(g,g)));
+const fd=v=>(typeof v==="string"?new Date(v+"T00:00:00"):v).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
+const LV=[{min:0,name:"Registered",f:["Digital donor card with your blood group and ID","Listed for donor matching once your health reports are reviewed"]},{min:1,name:"Bronze",f:["Digital certificate showing your donation record"]},{min:5,name:"Silver",f:["Priority contact when your blood group is urgently needed","Free basic health check-up at donation camps"]},{min:10,name:"Gold",f:["Recognition at the annual donor appreciation event","Priority assistance if you or your family need blood, subject to availability"]},{min:25,name:"Platinum",f:["Honorary Lifesaver title on your card and certificate"]}];
+function renderCard(){const d=donor.donations||[],n=d.length;let lv=LV[0];LV.forEach(l=>{if(n>=l.min)lv=l});
+let nxt="–";if(n){const x=new Date(d[0].date+"T00:00:00");x.setMonth(x.getMonth()+3);nxt=x<=new Date()?"Eligible now":fd(x)}
+const nm=donor.name?esc(donor.name):"Your name";const ini=(donor.name||"?").trim().charAt(0).toUpperCase(),ph=donor.photo&&donor.photo.indexOf("data:image/")===0?'<img class="dc-ph" src="'+donor.photo+'" alt="Photo of '+nm+'">':'<div class="dc-ph" aria-hidden="true">'+esc(ini)+'</div>';
+$("dcard").innerHTML='<div class="dc-top"><div><div class="dc-brand"><svg viewBox="0 0 40 52" aria-hidden="true"><use href="#mark"/></svg>Emergency Blood</div><div class="dc-tag">DIGITAL DONOR CARD</div></div><span class="dc-badge">'+lv.name+'</span></div>'+
+'<div class="dc-mid"><div class="dc-who">'+ph+'<div><div class="dc-name">'+nm+'</div><div class="dc-sub">'+(donor.city?esc(donor.city):"City")+' · '+(donor.phone?esc(donor.phone):"Phone")+'</div></div></div><div class="dc-bg">'+(donor.group?esc(donor.group):"–")+'</div></div>'+
+'<div class="dc-stats"><div><b>'+n+'</b><span>Donations recorded</span></div><div><b>'+(n?fd(d[0].date):"–")+'</b><span>Last donation</span></div><div><b>'+nxt+'</b><span>Next donation</span></div></div>'+
+'<p class="dc-cert">'+(n?'This certifies that '+nm+' has voluntarily donated blood '+n+' time'+(n>1?'s':'')+' as per the records.':'Add your donations to build your certified record.')+'</p>'+
+'<div class="dc-id"><span>Donor ID: '+(donor.id?esc(donor.id):"Not issued yet")+'</span><span>Member since: '+(donor.since?fd(donor.since):"–")+'</span></div>';
+const nx=LV.find(l=>l.min>n);
+$("prog").innerHTML=nx?'<p style="margin:0 0 10px;color:var(--muted)"><b style="color:var(--head)">'+(nx.min-n)+' more donation'+(nx.min-n>1?'s':'')+'</b> to reach <b style="color:var(--head)">'+nx.name+'</b>.</p><div class="meter"><i style="width:'+Math.round(100*(n-lv.min)/(nx.min-lv.min))+'%;background:var(--crim)"></i></div>':'<p style="margin:0;color:var(--muted)">You have reached the highest level. Thank you for saving lives.</p>';
+$("fac").innerHTML=LV.filter(l=>n>=l.min).flatMap(l=>l.f).map(t=>'<li><svg class="ic"><use href="#check"/></svg><span>'+esc(t)+'</span></li>').join("");
+$("hist").innerHTML=n?'<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Date</th><th>Hospital or blood bank</th><th></th></tr></thead><tbody>'+d.map((x,i)=>'<tr><td style="font:inherit;color:inherit">'+fd(x.date)+'</td><td>'+esc(x.place)+'</td><td><button type="button" class="lnk" data-i="'+i+'">Remove</button></td></tr>').join("")+'</tbody></table></div>':'<p class="note" style="margin:0">No donations recorded yet. Use "Add a donation" to start your record.</p>'}
+$("cardForm").addEventListener("submit",ev=>{ev.preventDefault();
+if(!check([filled("kn","Enter your full name."),filled("kg","Choose your blood group."),["kp",phone,"Enter a valid phone number."],filled("kc","Enter your city.")]))return;
+donor.name=$("kn").value.trim();donor.group=$("kg").value;donor.phone=$("kp").value.trim();donor.city=$("kc").value.trim();
+if(!donor.id){donor.id="EB-"+_t.getFullYear()+"-"+String(Math.floor(10000+Math.random()*90000));donor.since=todayISO}
+donor.donations=donor.donations||[];saveDonor();renderCard()});
+$("donForm").addEventListener("submit",ev=>{ev.preventDefault();$("donMsg").innerHTML="";
+if(!check([["kd",el=>el.value!==""&&el.value<=todayISO,"Enter a valid past or current date."],filled("kl","Enter the hospital or blood bank.")]))return;
+if(!donor.id){$("donMsg").innerHTML='<p class="err" style="margin-top:10px">Create your card first, then add donations.</p>';return}
+donor.donations.push({date:$("kd").value,place:$("kl").value.trim()});donor.donations.sort((a,b)=>b.date.localeCompare(a.date));
+saveDonor();renderCard();$("kd").value="";$("kl").value=""});
+$("hist").addEventListener("click",ev=>{const b=ev.target.closest("[data-i]");if(!b)return;donor.donations.splice(+b.dataset.i,1);saveDonor();renderCard()});
+
+$("kf").addEventListener("change",()=>{const f=$("kf").files[0],m=$("kfMsg");m.textContent="";if(!f)return;
+if(!/^image\//.test(f.type)){m.textContent="Please choose an image file.";return}
+if(f.size>8*1024*1024){m.textContent="That image is too large. Choose one under 8 MB.";return}
+const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=256;c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,256,256);donor.photo=c.toDataURL("image/jpeg",.82);saveDonor();renderCard()};im.onerror=()=>{m.textContent="Could not read that image."};im.src=r.result};r.onerror=()=>{m.textContent="Could not read that file."};r.readAsDataURL(f)});
+$("kfx").addEventListener("click",()=>{delete donor.photo;$("kf").value="";saveDonor();renderCard()});
+let TOKEN=null;try{TOKEN=sessionStorage.getItem("ebAdmin")}catch(e){}
+async function api(method,url,body,auth){const h={};if(body)h["Content-Type"]="application/json";if(auth&&TOKEN)h.Authorization="Bearer "+TOKEN;
+const r=await fetch(url,{method,headers:h,body:body?JSON.stringify(body):undefined});let d=null;try{d=await r.json()}catch(e){}
+if(!r.ok){const e=new Error((d&&d.error)||"Request failed");e.status=r.status;if(r.status===401&&auth){TOKEN=null;try{sessionStorage.removeItem("ebAdmin")}catch(x){}}throw e}return d}
+function needAdmin(){if(TOKEN)return true;$("stOut").innerHTML='<p class="note" style="margin:10px 0 0">Only admins can update the shared stock. <a href="#admin">Sign in on the Admin page</a>.</p>';return false}
+async function send(col,data,out){let ok=false;try{await api("POST","/api/"+col,data);ok=true}catch(e){}
+if(out)out.insertAdjacentHTML('beforeend','<p class="note" style="margin:10px 0 0">'+(ok?'Your submission was received.':'We could not send this right now. Please try again or call us.')+'</p>')}
+async function loadStock(){try{const d=await api("GET","/api/stock");stock=(d&&d.data)||{};renderStock()}catch(e){}}
+loadStock();setInterval(()=>{if(!document.hidden)loadStock()},30000);if(location.hash==="#admin")loadAdmin();
+function getDl(){return{save:async({filename,data})=>{const b=data instanceof Blob?data:new Blob([data],{type:"text/csv;charset=utf-8"});const u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000)}}}
+function pdfFromJpeg(jpg,pw,ph,tw,th){const en=new TextEncoder(),parts=[],offs=[];let len=0;const push=b=>{const u=typeof b==="string"?en.encode(b):b;parts.push(u);len+=u.length};
+push('%PDF-1.4\n');offs[1]=len;push('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');offs[2]=len;push('2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n');
+offs[3]=len;push('3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+tw+' '+th+'] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>\nendobj\n');
+offs[4]=len;push('4 0 obj\n<< /Type /XObject /Subtype /Image /Width '+pw+' /Height '+ph+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+jpg.length+' >>\nstream\n');push(jpg);push('\nendstream\nendobj\n');
+const cs='q '+tw+' 0 0 '+th+' 0 0 cm /Im0 Do Q';offs[5]=len;push('5 0 obj\n<< /Length '+cs.length+' >>\nstream\n'+cs+'\nendstream\nendobj\n');
+const xr=len;let t='xref\n0 6\n0000000000 65535 f \n';for(let i=1;i<=5;i++)t+=String(offs[i]).padStart(10,'0')+' 00000 n \n';t+='trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n'+xr+'\n%%EOF';push(t);return new Blob(parts,{type:'application/pdf'})}
+async function drawCard(){try{await document.fonts.load('700 40px Lora');await document.fonts.load('700 20px Lato')}catch(e){}
+const W=1050,H=640,S=2,c=document.createElement('canvas');c.width=W*S;c.height=H*S;const x=c.getContext('2d');x.scale(S,S);x.fillStyle='#fff';x.fillRect(0,0,W,H);
+const rr=(a,b,w,h,r)=>{x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()};
+const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#8e1b2a');g.addColorStop(1,'#3a1218');rr(0,0,W,H,36);x.fillStyle=g;x.fill();
+const g2=x.createRadialGradient(W,0,0,W,0,420);g2.addColorStop(0,'rgba(224,164,88,.35)');g2.addColorStop(1,'rgba(224,164,88,0)');rr(0,0,W,H,36);x.fillStyle=g2;x.fill();
+const d=donor.donations||[],n=d.length;let lv=LV[0];LV.forEach(l=>{if(n>=l.min)lv=l});let nxt='–';if(n){const z=new Date(d[0].date+'T00:00:00');z.setMonth(z.getMonth()+3);nxt=z<=new Date()?'Eligible now':fd(z)}
+x.save();x.translate(52,44);x.scale(.62,.62);x.fillStyle='#fff';x.fill(new Path2D('M20 2C20 2 3 24 3 34a17 17 0 0 0 34 0C37 24 20 2 20 2Z'));x.strokeStyle='#8e1b2a';x.lineWidth=2.6;x.lineCap='round';x.lineJoin='round';x.stroke(new Path2D('M7 34h9l4-9 5 17 4-8h7'));x.restore();
+x.fillStyle='#fff';x.font='700 26px Lora,Georgia,serif';x.fillText('Emergency Blood',86,66);x.globalAlpha=.8;x.font='700 13px Lato,Arial,sans-serif';x.fillText('DIGITAL DONOR CARD',88,88);x.globalAlpha=1;
+x.font='700 17px Lato,Arial,sans-serif';const bw=x.measureText(lv.name).width+40;rr(W-52-bw,44,bw,36,18);x.fillStyle='#e0a458';x.fill();x.fillStyle='#3a1218';x.fillText(lv.name,W-52-bw+20,68);
+x.save();rr(52,130,132,132,24);x.clip();let ok=false;
+if(donor.photo&&donor.photo.indexOf('data:image/')===0){try{const im=await new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=donor.photo});x.drawImage(im,52,130,132,132);ok=true}catch(e){}}
+if(!ok){x.fillStyle='rgba(255,255,255,.18)';x.fillRect(52,130,132,132);x.fillStyle='#fff';x.font='700 56px Lora,Georgia,serif';x.textAlign='center';x.fillText((donor.name||'?').trim().charAt(0).toUpperCase(),118,214);x.textAlign='left'}
+x.restore();rr(52,130,132,132,24);x.strokeStyle='rgba(255,255,255,.75)';x.lineWidth=3;x.stroke();
+x.fillStyle='#fff';x.font='700 44px Lora,Georgia,serif';x.fillText(donor.name||'Your name',212,188,560);x.globalAlpha=.88;x.font='400 22px Lato,Arial,sans-serif';x.fillText((donor.city||'City')+'  ·  '+(donor.phone||'Phone'),212,228,560);x.globalAlpha=1;
+x.beginPath();x.arc(W-117,196,65,0,Math.PI*2);x.fillStyle='#fff';x.fill();x.fillStyle='#8e1b2a';x.font='700 50px Lora,Georgia,serif';x.textAlign='center';x.fillText(donor.group||'–',W-117,214);x.textAlign='left';
+[[String(n),'Donations recorded'],[n?fd(d[0].date):'–','Last donation'],[nxt,'Next donation']].forEach((s,i)=>{const bx=52+i*320;rr(bx,300,300,96,16);x.fillStyle='rgba(255,255,255,.14)';x.fill();x.fillStyle='#fff';x.font='700 28px Lora,Georgia,serif';x.fillText(s[0],bx+22,348,256);x.globalAlpha=.85;x.font='400 16px Lato,Arial,sans-serif';x.fillText(s[1],bx+22,376);x.globalAlpha=1});
+const cert=n?'This certifies that '+donor.name+' has voluntarily donated blood '+n+' time'+(n>1?'s':'')+' as per the records.':'Add your donations to build your certified record.';
+x.fillStyle='#fff';x.font='400 21px Lato,Arial,sans-serif';let line='',yy=450;cert.split(' ').forEach(w=>{const t=line?line+' '+w:w;if(x.measureText(t).width>940&&line){x.fillText(line,52,yy);yy+=30;line=w}else line=t});x.fillText(line,52,yy);
+x.strokeStyle='rgba(255,255,255,.28)';x.lineWidth=1.5;x.beginPath();x.moveTo(52,560);x.lineTo(W-52,560);x.stroke();
+x.globalAlpha=.9;x.font='400 18px Lato,Arial,sans-serif';x.fillText('Donor ID: '+(donor.id||'Not issued yet'),52,597);x.textAlign='right';x.fillText('Member since: '+(donor.since?fd(donor.since):'–'),W-52,597);x.textAlign='left';x.globalAlpha=1;return c}
+async function saveFile(kind){const m=$('dlMsg');m.textContent='';if(!donor.id){m.textContent='Create your card first.';return}
+const dl=getDl();
+try{const c=await drawCard(),safe=donor.id.replace(/[^A-Za-z0-9-]/g,'');
+if(kind==='png'){const b=await new Promise(r=>c.toBlob(r,'image/png'));await dl.save({filename:'donor-card-'+safe+'.png',data:b})}
+else{const jb=await new Promise(r=>c.toBlob(r,'image/jpeg',.92));const u8=new Uint8Array(await jb.arrayBuffer());await dl.save({filename:'donor-card-'+safe+'.pdf',data:pdfFromJpeg(u8,c.width,c.height,525,320)})}
+m.textContent='Saved.'}catch(e){m.textContent=e&&e.code==='declined'?'Download cancelled.':'Could not save the file.'}}
+$('dlPdf').addEventListener('click',()=>saveFile('pdf'));$('dlPng').addEventListener('click',()=>saveFile('png'));
+const AC={registrations:[['createdAt','Date'],['name','Name'],['phone','Phone'],['email','Email'],['city','City'],['group','Group'],['age','Age'],['result','Result'],['reports','Reports']],requests:[['createdAt','Date'],['patient','Patient'],['group','Group'],['units','Units'],['urgency','Urgency'],['hospital','Hospital'],['city','City'],['contact','Contact'],['phone','Phone']],messages:[['createdAt','Date'],['name','Name'],['email','Email'],['message','Message']]};
+let adData={registrations:[],requests:[],messages:[]},adTab='registrations';
+const cell=(k,v)=>v==null?'':k==='createdAt'?new Date(v).toLocaleString('en-IN'):Array.isArray(v)?v.join(', '):String(v);
+function renderAdmin(){$('adSum').innerHTML=[['registrations','Donor registrations'],['requests','Blood requests'],['messages','Messages']].map(([k,t])=>'<button type="button" class="fact adtab" data-t="'+k+'" aria-pressed="'+(k===adTab)+'"><b>'+adData[k].length+'</b><span>'+t+'</span></button>').join('');
+const rows=adData[adTab];$('adTbl').innerHTML=rows.length?'<table class="tbl"><thead><tr>'+AC[adTab].map(c=>'<th>'+c[1]+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+AC[adTab].map(c=>'<td style="font:inherit;color:inherit;vertical-align:top">'+esc(cell(c[0],r[c[0]]))+'</td>').join('')+'</tr>').join('')+'</tbody></table>':'<p class="note" style="margin:0">No submissions yet.</p>'}
+function adminLogin(){const g=$('adGate');$('adBody').hidden=true;g.innerHTML='<form id="adLogin" style="max-width:340px;display:grid;gap:12px"><div><label for="adPw">Admin password</label><input id="adPw" type="password" autocomplete="current-password" required></div><button class="btn sm" type="submit">Sign in</button><p class="err" id="adErr"></p></form>';
+$('adLogin').addEventListener('submit',async ev=>{ev.preventDefault();try{const d=await api('POST','/api/admin/login',{password:$('adPw').value});TOKEN=d.token;try{sessionStorage.setItem('ebAdmin',TOKEN)}catch(e){}loadAdmin()}catch(e){$('adErr').textContent=e.status===429?'Too many attempts. Try again later.':'Incorrect password.'}})}
+async function loadAdmin(){const g=$('adGate');if(!TOKEN){adminLogin();return}g.textContent='Loading…';
+try{const d=await api('GET','/api/admin/data',null,true);for(const c of Object.keys(adData))adData[c]=d[c]||[];
+g.textContent='';$('adBody').hidden=false;renderAdmin()}catch(e){if(e.status===401){adminLogin()}else g.textContent='Could not load submissions.'}}
+addEventListener('hashchange',()=>{if(location.hash==='#admin')loadAdmin()});
+$('adSum').addEventListener('click',ev=>{const b=ev.target.closest('[data-t]');if(b){adTab=b.dataset.t;renderAdmin()}});
+$('adRef').addEventListener('click',loadAdmin);
+$('adCsv').addEventListener('click',async()=>{const m=$('adMsg');m.textContent='';const rows=adData[adTab];if(!rows.length){m.textContent='Nothing to export yet.';return}
+const dl=getDl();
+const q=v=>{let s=String(v);if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
+const csv='\uFEFF'+[AC[adTab].map(c=>q(c[1])).join(',')].concat(rows.map(r=>AC[adTab].map(c=>q(cell(c[0],r[c[0]]))).join(','))).join('\n');
+try{await dl.save({filename:adTab+'.csv',data:csv});m.textContent='Saved.'}catch(e){m.textContent=e&&e.code==='declined'?'Download cancelled.':'Could not save the file.'}});
+if(donor.name){$("kn").value=donor.name;$("kg").value=donor.group;$("kp").value=donor.phone;$("kc").value=donor.city}
+renderCard();
+renderStock();
+</script>
+</body>
+</html>
